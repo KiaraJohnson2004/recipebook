@@ -1,0 +1,17 @@
+Tt Matcha tea
+Pp 2 minutes
+Ct 5 minutes
+Sv 1 cup
+Cs Beverage
+Kc 5
+Ii 1/2 tsp matcha powder
+Ii 1 cup water
+Dd Sift 1/2 tsp matcha powder into a bowl or chawan
+Dd Pour 2 ounces room temperature water into the bowl
+Dd Whisk vigorously with a whisk or chasen
+Dd Bring remaining water to a near boil
+Dd Slowly pour hot water into the bowl
+Dd Enjoy
+Nn Whisk with an M shape until frothy
+Nn Can sweeten with honey or sugar if desired
+Nn Can replace hot water with warm milk for a matcha latte

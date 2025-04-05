@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head> 
+    <title>Discover Recipes</title>
+    <style>
+    	#menu {
+  	    list-style-type: none;
+  	    margin: 0;
+  	    padding: 0;
+  	    overflow: hidden;
+  	    background-color: #333333;
+    	}
+
+    	.menuItem {
+  	    float: left;
+    	}
+
+    	.menuLink{
+  	    display: block;
+  	    color: white;
+  	    text-align: center;
+  	    padding: 16px;
+  	    text-decoration: none;
+    	}
+
+    	.menuLink:hover {
+  	    background-color: #111111;
+    	}
+    </style>
+</head>
+<body>
+    <ul id="menu">
+	<li class="menuItem"><a class="menuLink" href="/">Home</a></li>
+        <li class="menuItem"><a class="menuLink" href="/create">Add a New Recipe</a></li>
+        <li class="menuItem"><a class="menuLink" href="/search">View Saved Recipes</a></li>
+        <li class="menuItem"><a class="menuLink" href="/discover">Search Recipes on the Web</a></li>
+    </ul>
+    <h1>{{title}}</h1>
+    <div>
+	{{content | safe}}
+    </div>
+</body>
+</html>

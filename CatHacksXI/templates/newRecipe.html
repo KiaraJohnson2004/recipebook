@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>New Recipe</title>
+    <style>
+    	ul {
+  	    list-style-type: none;
+  	    margin: 0;
+  	    padding: 0;
+  	    overflow: hidden;
+  	    background-color: #333333;
+    	}
+
+    	li {
+  	    float: left;
+    	}
+
+    	li a {
+  	    display: block;
+  	    color: white;
+  	    text-align: center;
+  	    padding: 16px;
+  	    text-decoration: none;
+    	}
+
+    	li a:hover {
+  	    background-color: #111111;
+    	}
+    </style>
+
+</head>
+<body>
+    <ul id="menu">
+        <li><a href="/">Home</a></li>
+	<li><a href="/create">Add a New Recipe</a></li>
+        <li><a href="/search">View Saved Recipes</a></li>
+        <li><a href="/discover">Search Recipes on the Web</a></li>
+    </ul>
+    <h1>Create a New Recipe</h1>
+    <form method="POST" action="/create">
+    	<label>Recipe Name:</label><br>
+    	<input type="text" name="name"><br>
+	
+	<label>Prep time:</label><br>
+    	<input type="text" name="prep"><br>
+
+	<label>Cook time:</label><br>
+    	<input type="text" name="cook"><br>
+
+	<label>Yield:</label><br>
+    	<input type="text" name="serv"><br>
+
+	<label>Course:</label><br>
+    	<input type="text" name="meal"><br>
+
+	<label>Calories:</label><br>
+    	<input type="text" name="cals"><br>
+
+    	<label>Ingredients:</label><br>
+    	<textarea name="ingredients"></textarea><br>
+
+    	<label>Instructions:</label><br>
+    	<textarea name="instructions"></textarea><br>
+
+	<label>Notes:</label><br>
+    	<textarea name="notes"></textarea><br>
+
+    	<input type="submit" value="Save Recipe">
+    </form>
+</body>
+</html>
