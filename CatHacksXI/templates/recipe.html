@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
-<head> 
+<head>
     <title>Discover Recipes</title>
     <style>
-        <style>
+       <style>
 	body {
             font-family: 'Roboto', sans-serif;  /* Modern, clean font */
     	    background-color: #f9f9f9;         /* Light, neutral background */
@@ -45,9 +45,30 @@
         <li class="menuItem"><a class="menuLink" href="/search">View Saved Recipes</a></li>
         <li class="menuItem"><a class="menuLink" href="/discover">Search Recipes on the Web</a></li>
     </ul>
-    <h1>{{title}}</h1>
-    <div>
-	{{content}}
-    </div>
-</body>
+    <h1>{{ recipe.title }}</h1>
+
+    <p><strong>Prep Time:</strong> {{ recipe.prepTime }}</p>
+    <p><strong>Cook Time:</strong> {{ recipe.cookTime }}</p>
+    <p><strong>Servings:</strong> {{ recipe.servings }}</p>
+    <p><strong>Course:</strong> {{ recipe.course }}</p>
+    <p><strong>Calories:</strong> {{ recipe.calories }}</p>
+
+    <h3>Ingredients</h3>
+    <ul>
+      {% for item in recipe.ingredients %}
+        <li>{{ item }}</li>
+      {% endfor %}
+    </ul>
+
+    <h3>Directions</h3>
+    <ol>
+      {% for step in recipe.directions %}
+        <li>{{ step }}</li>
+      {% endfor %}
+    </ol>
+
+    {% if recipe.notes %}
+    <h3>Notes</h3>
+    <p>{{ recipe.notes }}</p>
+{% endif %}    </body>
 </html>

@@ -116,7 +116,7 @@ class Recipe:
             f.write("Nn " + note + "\n")
             
         f.close()
-        return None
+        return fileName
         
             
 def newRecipe():
@@ -214,12 +214,14 @@ database = mysql.connector.connect(host="localhost", user="kiara", password="Pri
 mycursor = database.cursor()
 try:
     database = mysql.connector.connect(host="localhost", user="kiara", password="Prince$1don", database="recipebook")
+    mycursor = database.cursor()
+    
 except:
     mycursor.execute("CREATE DATABASE recipebook")
     database = mysql.connector.connect(host="localhost", user="kiara", password="Prince$1don", database="recipebook")
+    mycursor.execute("CREATE TABLE recipes (id TEXT PRIMARY KEY, name TEXT, course TEXT, file TEXT)")
 
 
-recipes = []
 app = Flask(__name__)
 @app.route('/')
 def index():
@@ -256,15 +258,33 @@ def create():
         recipe.notes = notes
     
         # make file and add to database
-        recipe.makeFile()
-        recipes.append(recipe)
+        fileName = recipe.makeFile()
+        nameSanSpace = name.replace(" ", "")
+        dbId = nameSanSpace.lower()
+        mycursor.execute('INSERT INTO recipes VALUES(\"{}\", \"{}\", \"{}\", \"{}\")'.format(dbId, name, meal, fileName))
         return render_template("index.html")
     else:
         return render_template("newRecipe.html")
 
-@app.route('/search')
+@app.route('/search', methods=["GET", "POST"])
 def search():
-    return render_template('searchRecipes.html')
+    if request.method == "GET":
+        return render_template('searchRecipes.html')
+    else:
+        query = request.form["query"]
+        querySanSpace = query.replace(" ", "")
+        dbInput = querySanSpace.lower()
+        mycursor.execute("SELECT file FROM recipes WHERE id = %s", (dbInput,))
+        result = mycursor.fetchone()
+        if result is None:
+            return render_template("noresults.html")
+        else:
+            recipe = recipeFromFile(result[0])
+            return render_template("recipe.html", recipe=recipe)
+
+@app.route('/recipe')
+def dispRecipe():
+    return render_template("recipe.html")
 
 @app.route('/noresults')
 def noResults():
